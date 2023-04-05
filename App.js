@@ -1,16 +1,23 @@
-import React from 'react';
-import SignInScreen from './src/screens/SignInScreen';
+import {React} from 'react';
+import Navigation from './src/Navigation';
+import { Amplify } from 'aws-amplify';
+import config from './src/aws-exports';
+
+Amplify.configure(config)
+
 import {
   SafeAreaView,
   StyleSheet,
   Text,
 } from 'react-native';
+
+
   
 function App() {
-
+  //Auth.signOut()
   return (
     <SafeAreaView style={styles.root}>
-      <SignInScreen></SignInScreen>
+       <Navigation/>
     </SafeAreaView>
   );
 }
@@ -21,5 +28,6 @@ const styles = StyleSheet.create({
   backgroundColor: '#F9FBFC'
  }
 });
+
 
 export default App;

@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tipper-staging-123244-authRole",
+      "UnauthRoleArn": "arn:aws:iam::031311355970:role/amplify-tipper-staging-123244-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::031311355970:role/amplify-tipper-staging-123244-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-tipper-staging-123244-deployment",
+      "UnauthRoleName": "amplify-tipper-staging-123244-unauthRole",
+      "StackName": "amplify-tipper-staging-123244",
+      "StackId": "arn:aws:cloudformation:eu-north-1:031311355970:stack/amplify-tipper-staging-123244/2685bc30-c652-11ed-8586-0ebdbc522338",
+      "AmplifyAppId": "devhd8aorhhgl"
+    },
+    "categories": {
+      "auth": {
+        "Tipper": {}
+      }
+    }
+  }
+}
