@@ -2,6 +2,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import CalculateTipScreen from '../screens/CalculateTip/CalculateTipScreen'
 import SignInScreen from '../screens/SignInScreen'
 import SignUpScreenUser from '../screens/SignUpScreenUser'
 import ConfirmSignUp from '../screens/ConfirmSignUp';
@@ -26,6 +27,7 @@ const Navigation = () => {
         <Stack.Screen name="ResetPasswordEnterEmail" component={ResetPasswordEnterEmail}/>
         <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen}/>
         <Stack.Screen name="QRCodeGenerationScreen" component={QRCodeGenerationScreen}/>
+        <Stack.Screen name="CalculateTipScreen" component={CalculateTipScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
