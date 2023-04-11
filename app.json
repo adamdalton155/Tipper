@@ -1,4 +1,10 @@
 {
   "name": "Tipper",
-  "displayName": "Tipper"
+  "displayName": "Tipper",
+  "android": {
+    "package": "android.package"
+  },
+  "ios": {
+    "bundleIdentifier": "android.package"
+  }
 }

@@ -1,18 +1,16 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import SignInScreen from '../screens/SignInScreen'
-import SignUpScreenAdmin from '../screens/SignUpScreenAdmin'
-import ConfirmSignUp from '../screens/ConfirmSignUpAdmin';
-import ForgotPasswordScreen from '../screens/ForgotPasswordAdmin/ForgotPasswordAdminScreen.js'
-import ResetPasswordAdminScreen from '../screens/ResetPasswordAdminScreen/ResetPasswordAdminScreen.js'
-import AdminHomeScreen from '../screens/AdminScreens/AdminHomeScreen';
-import HomeScreen from '../screens/HomeScreen';
-import SMSCodeResetPassword from '../screens/EmailCodeResetPassword';
-import AddEmployeeScreen from '../screens/AddEmployeeScreen'
-import SignUpScreen from '../screens/SignUpScreen'
 
+import SignInScreen from '../screens/SignInScreen'
+import SignUpScreenUser from '../screens/SignUpScreenUser'
+import ConfirmSignUp from '../screens/ConfirmSignUp';
+import HomeScreen from '../screens/HomeScreen';
+import SignUpScreenEmployee from '../screens/SignUpScreenEmployee'
+import SignUpChoice from '../screens/SignUpChoiceScreen/SignUpChoice'
+import ResetPasswordEnterEmail from '../screens/EmailCodeResetPassword/ResetPasswordEnterEmail'
+import ResetPasswordScreen from '../screens/ResetPasswordScreen'
+import QRCodeGenerationScreen from '../screens/QRCodeGenerationScreen/QRCodeGenerationScreen'
 const Stack = createNativeStackNavigator()
 
 const Navigation = () => {
@@ -20,15 +18,14 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SignIn" component={SignInScreen}/>
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen}/>
-        <Stack.Screen name="SignUpScreenAdmin" component={SignUpScreenAdmin}/>
+        <Stack.Screen name="SignUpChoice" component={SignUpChoice}/>
+        <Stack.Screen name="SignUpScreenEmployee" component={SignUpScreenEmployee}/>
+        <Stack.Screen name="SignUpScreenUser" component={SignUpScreenUser}/>
         <Stack.Screen name="ConfirmSignUp" component={ConfirmSignUp}/>
         <Stack.Screen name="HomeScreen" component={HomeScreen}/>
-        <Stack.Screen name="AdminHomeScreen" component={AdminHomeScreen}/>
-        <Stack.Screen name="AddEmployeeScreen" component={AddEmployeeScreen}/>
-        <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
-        <Stack.Screen name="SMSCodeResetPassword" component={SMSCodeResetPassword}/>
-        <Stack.Screen name="ResetPasswordAdminScreen" component={ResetPasswordAdminScreen}/>
+        <Stack.Screen name="ResetPasswordEnterEmail" component={ResetPasswordEnterEmail}/>
+        <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen}/>
+        <Stack.Screen name="QRCodeGenerationScreen" component={QRCodeGenerationScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

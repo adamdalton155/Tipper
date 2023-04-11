@@ -8,43 +8,35 @@ import { useNavigation } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
 
 const SignInScreen = () =>{
+    const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [loading, setLoading] = useState('')
     const navi = useNavigation()
 
 
-const onSignInPressed = async () =>{
-    if(loading){ //Stops double presses
+const onSignInPressed = async () =>{ 
+    if(loading){
         return
     }
-
     setLoading(true)
     try {
         const response = await Auth.signIn(email, password)
         console.log(response)
-        console.warn("Signed in")
         navi.navigate('HomeScreen')
     } catch (error) {
-        Alert.alert("Oops", error.message)
+        Alert.alert("Oops: ", error.message)
     }
-
     setLoading(false)
 }
 
 const onSignUpPressed = () =>{
     console.warn("Signed up pressed")
-    navi.navigate('SignUpScreen')
+    navi.navigate('SignUpChoice')
 }
 
 const onForgotPasswordPressed = () => {
     console.warn("Forgot password")
-    navi.navigate('ForgotPasswordScreen')
-}
-
-const onSignUpBusinessEmployee = () =>{
-    console.warn("Sign up business/employee")
-    navi.navigate('SignUpScreenAdmin')
+    navi.navigate('ResetPasswordEnterEmail')
 }
 
 return(
@@ -53,9 +45,8 @@ return(
         <Image source={Logo} style={styles.logo} resizeMode="contain"></Image>
        <TextInput style={styles.container} placeholder="E-mail address" autoCapitalize="none" value={email} onChangeText={setEmail} />
         <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true}/>
-        <CustomButton text={loading ? "Loading..." :"Sign in"} onPress={onSignInPressed}/>
+        <CustomButton text={loading ? "Loading..." : "Sign in"} onPress={onSignInPressed}/>
         <CustomButton text="Sign Up" onPress={onSignUpPressed} bgColor='#29A0B1' fgColor='#363636' type="TERTIARY"/>
-        <CustomButton text="Want to register your business?" onPress={onSignUpBusinessEmployee} bgColor='#A0E7E5' fgColor='#363636' type="TERTIARY"/>
         <CustomButton text="Forgot password?" onPress={onForgotPasswordPressed} type="TERTIARY"/>
     </View>
     </ScrollView>

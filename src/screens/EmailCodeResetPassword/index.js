@@ -1,1 +1,1 @@
-export {default} from './EnterCodeScreen'
+export {default} from './ResetPasswordEnterEmail'
