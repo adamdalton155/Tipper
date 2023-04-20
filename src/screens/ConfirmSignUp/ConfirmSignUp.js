@@ -9,7 +9,6 @@ import { Alert } from 'react-native';
 const ConfirmSignUp = () =>{
     const route = useRoute()
     const [code, setCode] = useState('')
-    const [qrCode, setQRCode] = useState('')
     const navi = useNavigation()
 
 
@@ -17,7 +16,7 @@ const onConfirmPressed = async() =>{
     try {
         const response = await Auth.confirmSignUp(route.params.email, code)
         console.log(response)
-        navi.navigate('SignIn')
+        navi.navigate('QRCodeGenerationScreen')
     } catch (error) {
         Alert.alert("Oops ", error.message)
     }

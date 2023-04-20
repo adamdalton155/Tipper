@@ -25,11 +25,10 @@ const SignUpScreenEmployee = () => {
                     name: firstName,
                     family_name: secondName,
                     phone_number: phoneNum,
-                    nickname: iban
                 }
             });
             console.log(response);
-            navi.navigate('ConfirmSignUp', {email, iban})
+            navi.navigate('ConfirmSignUp', {email})
         } catch (error) {
             Alert.alert('Oops', error.message);
         }
@@ -49,7 +48,6 @@ const SignUpScreenEmployee = () => {
                 <TextInput style={styles.container} placeholder="Email address" autoCapitalize="none" value={email} onChangeText={setEmail} />
                 <TextInput style={styles.container} placeholder="Phone number (+ and country code)" value={phoneNum} onChangeText={setPhoneNum} />
                 <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
-                <TextInput style={styles.container} placeholder="IBAN" value={iban} onChangeText={setiban} />
                 <CustomButton text="Register account" onPress={onRegisterEmployeePressed} />
                 <CustomButton text="Have an account? Sign in" onPress={onSignInPressed} type="TERTIARY" />
             </View>
