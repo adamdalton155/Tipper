@@ -16,6 +16,7 @@ import UpdateAccountDetails from '../screens/UpdateAccountDetails/UpdateAccountD
 import UpdatePasswordScreen from '../screens/UpdatePassword/UpdatePasswordScreen'
 import UpdateEmail from '../screens/UpdateEmail/UpdateEmail'
 import ConfirmSignUpUser from '../screens/ConfirmSignUpUser/ConfirmSignUpUser'
+import QRCodeScan from '../screens/QRCodeScanner/QRCodeScan'
 const Stack = createNativeStackNavigator()
 
 const Navigation = () => {
@@ -36,6 +37,7 @@ const Navigation = () => {
         <Stack.Screen name="UpdatePasswordScreen" component={UpdatePasswordScreen}/>
         <Stack.Screen name="UpdateEmail" component={UpdateEmail}/>
         <Stack.Screen name="ConfirmSignUpUser" component={ConfirmSignUpUser}/>
+        <Stack.Screen name="QRCodeScan" component={QRCodeScan}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

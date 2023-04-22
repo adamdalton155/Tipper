@@ -19,7 +19,7 @@ const UpdatePasswordScreen = () => {
         navi.navigate('HomeScreen');
       })
       .catch((error) => {
-        Alert.alert('Error', error.message);
+        Alert.alert('Oops, incorrect password or requirments');
       });
   };
 
@@ -41,6 +41,8 @@ const UpdatePasswordScreen = () => {
         onChangeText={setNewPassword}
       />
       <CustomButton text="Update password" onPress={onUpdatePasswordPressed} />
+
+      <Text>- Password requires an uppercase character, lowercase character a number and needs to be atleast 8 characters long</Text>
     </View>
   );
 };

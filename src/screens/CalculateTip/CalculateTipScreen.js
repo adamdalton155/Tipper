@@ -2,18 +2,27 @@ import { View, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import CustomButton from '../../components/CustomButton/CustomButton'
-
+import { useNavigation } from '@react-navigation/native'
 const CalculateTipScreen = () => {
-
+    
     const [billTotal, setBillTotal] = useState('')
     const [percentage, setPercentage] = useState('')
     var [calculatedTip, setCalculatedTip] = useState('')
-    const CalculateTip = () =>{
-        setCalculatedTip((billTotal * percentage) / 100)
-        calculatedTip.toString()
+
+    const navi = useNavigation()
+
+    const CalculateTip = () => {
+  const calculatedTip = (billTotal * percentage) / 100;
+  const roundedTip = calculatedTip.toFixed(2); // round to 2 decimal places
+  setCalculatedTip(roundedTip);
+  setCalculatedTip.toString()
+  const tipAsNumber = parseFloat(calculatedTip);//used for payments
+};
+
+    const ScanQRCode = () =>{
+      navi.navigate('QRCodeScan')
     }
-
-
+ 
 
   return (
     <View style={styles.root}>
@@ -21,7 +30,8 @@ const CalculateTipScreen = () => {
       <TextInput style={styles.container} placeholder='Enter your bill total' value={billTotal} onChangeText={setBillTotal}></TextInput>
       <TextInput style={styles.container} placeholder='Enter the tip percentage' value={percentage} onChangeText={setPercentage}></TextInput>
       <CustomButton text="Calculate tip" onPress={CalculateTip}/>
-      <Text style={styles.value}>{calculatedTip}</Text>
+      <CustomButton text="Scan QR Code" onPress={ScanQRCode}/>
+      <Text style={styles.value}>{`€${calculatedTip}`}</Text>
     </View>
   )
 }

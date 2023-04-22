@@ -49,6 +49,7 @@ const SignUpScreenEmployee = () => {
                 <TextInput style={styles.container} placeholder="Phone number (+ and country code)" value={phoneNum} onChangeText={setPhoneNum} />
                 <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
                 <CustomButton text="Register account" onPress={onRegisterEmployeePressed} />
+                <Text>- Password requires an uppercase character, lowercase character a number and needs to be atleast 8 characters long</Text>
                 <CustomButton text="Have an account? Sign in" onPress={onSignInPressed} type="TERTIARY" />
             </View>
         </ScrollView>

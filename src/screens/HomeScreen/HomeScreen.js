@@ -7,7 +7,7 @@ const HomeScreen = () => {
   const navi = useNavigation()
 
   const MakeTip = () =>{
-   
+    navi.navigate('CalculateTipScreen')
   }
 
   const UpdateAccountDetails = () =>{
@@ -25,10 +25,10 @@ const HomeScreen = () => {
 
   return (
       <View style={styles.root}>
-       <Text style={styles.title}>Welcome!</Text>
+      <Text style={styles.title}>Welcome!</Text>
       <CustomButton text="Make a Tip" onPress={MakeTip}></CustomButton>
       <CustomButton text="Update account details" onPress={UpdateAccountDetails}></CustomButton>
-      <CustomButton text="Sign out"  bgColor='#DC143C' onPress={SignOut}></CustomButton>
+      <CustomButton style={styles.bottom} text="Sign out"  bgColor='#DC143C' onPress={SignOut}></CustomButton>
     </View>
   )
 }
@@ -42,6 +42,14 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: 'bold',
       margin: 10
+  },
+  bottom:{
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
+    padding: 10,
+    borderTopWidth: 1,
   }
 })
 
