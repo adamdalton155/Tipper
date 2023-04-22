@@ -5,7 +5,7 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import { ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
-
+import { Alert } from "react-native";
 const SignUpScreenUser = () => {
     const [firstName, setFirstName] = useState('')
     const [secondName, setSecondName] = useState('')
@@ -15,7 +15,6 @@ const SignUpScreenUser = () => {
     const navi = useNavigation()
 
     const onRegisterUserPressed = async() => {
-
         try {
             const response = await Auth.signUp({
                 username: email,
@@ -28,7 +27,7 @@ const SignUpScreenUser = () => {
                 }
             })
             console.log(response)
-            navi.navigate('ConfirmSignUp', {email})
+            navi.navigate('ConfirmSignUpUser', {email})
         } catch (error) {
             Alert.alert('Oops', error.message);
         }

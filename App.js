@@ -17,7 +17,7 @@ function App() {
   //Auth.signOut()
   return (
     <SafeAreaView style={styles.root}>
-       <QRCodeGenerationScreen/>
+       <Navigation/>
     </SafeAreaView>
   );
 }

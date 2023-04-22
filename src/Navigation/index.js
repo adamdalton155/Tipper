@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CalculateTipScreen from '../screens/CalculateTip/CalculateTipScreen'
 import SignInScreen from '../screens/SignInScreen'
 import SignUpScreenUser from '../screens/SignUpScreenUser'
-import ConfirmSignUp from '../screens/ConfirmSignUp';
+import ConfirmSignUp from '../screens/ConfirmSignUpEmployee';
 import HomeScreen from '../screens/HomeScreen';
 import SignUpScreenEmployee from '../screens/SignUpScreenEmployee'
 import SignUpChoice from '../screens/SignUpChoiceScreen/SignUpChoice'
@@ -13,6 +13,9 @@ import ResetPasswordEnterEmail from '../screens/EmailCodeResetPassword/ResetPass
 import ResetPasswordScreen from '../screens/ResetPasswordScreen'
 import QRCodeGenerationScreen from '../screens/QRCodeGenerationScreen/QRCodeGenerationScreen'
 import UpdateAccountDetails from '../screens/UpdateAccountDetails/UpdateAccountDetails'
+import UpdatePasswordScreen from '../screens/UpdatePassword/UpdatePasswordScreen'
+import UpdateEmail from '../screens/UpdateEmail/UpdateEmail'
+import ConfirmSignUpUser from '../screens/ConfirmSignUpUser/ConfirmSignUpUser'
 const Stack = createNativeStackNavigator()
 
 const Navigation = () => {
@@ -30,6 +33,9 @@ const Navigation = () => {
         <Stack.Screen name="QRCodeGenerationScreen" component={QRCodeGenerationScreen}/>
         <Stack.Screen name="CalculateTipScreen" component={CalculateTipScreen}/>
         <Stack.Screen name="UpdateAccountDetails" component={UpdateAccountDetails}/>
+        <Stack.Screen name="UpdatePasswordScreen" component={UpdatePasswordScreen}/>
+        <Stack.Screen name="UpdateEmail" component={UpdateEmail}/>
+        <Stack.Screen name="ConfirmSignUpUser" component={ConfirmSignUpUser}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
