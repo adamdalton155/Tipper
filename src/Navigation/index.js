@@ -12,6 +12,7 @@ import SignUpChoice from '../screens/SignUpChoiceScreen/SignUpChoice'
 import ResetPasswordEnterEmail from '../screens/EmailCodeResetPassword/ResetPasswordEnterEmail'
 import ResetPasswordScreen from '../screens/ResetPasswordScreen'
 import QRCodeGenerationScreen from '../screens/QRCodeGenerationScreen/QRCodeGenerationScreen'
+import UpdateAccountDetails from '../screens/UpdateAccountDetails/UpdateAccountDetails'
 const Stack = createNativeStackNavigator()
 
 const Navigation = () => {
@@ -28,6 +29,7 @@ const Navigation = () => {
         <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen}/>
         <Stack.Screen name="QRCodeGenerationScreen" component={QRCodeGenerationScreen}/>
         <Stack.Screen name="CalculateTipScreen" component={CalculateTipScreen}/>
+        <Stack.Screen name="UpdateAccountDetails" component={UpdateAccountDetails}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
