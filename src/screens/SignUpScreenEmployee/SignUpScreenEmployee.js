@@ -12,7 +12,6 @@ const SignUpScreenEmployee = () => {
     const [email, setEmail] = useState('')
     const [phoneNum, setPhoneNum] = useState('')
     const [password, setPassword] = useState('')
-    const [iban, setiban] = useState('')
     const navi = useNavigation()
 
     const onRegisterEmployeePressed = async () => {

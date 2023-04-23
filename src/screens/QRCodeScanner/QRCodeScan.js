@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 const QRCodeScan = () => {
   const[hasPermission, setHasPermission] = useState('')
   const[scanned, setScanned] = useState(false)
-  const[iban, setIban] = useState('Not yet scanned')
+  const[iban, setIban] = useState('Scan a QR Code')
  const navi = useNavigation()
   const askForCameraPermission = () =>{
     (async () =>{
@@ -45,8 +45,8 @@ const QRCodeScan = () => {
   }
   return(
     <View style={styles.container}>
-    <View style={styles.barcodebox}>
-    <BarCodeScanner
+    <View >
+    <BarCodeScanner 
       onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
       style={{height: 400, width: 400}}>
       </BarCodeScanner>

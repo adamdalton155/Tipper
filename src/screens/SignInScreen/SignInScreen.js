@@ -30,12 +30,12 @@ const onSignInPressed = async () =>{
 }
 
 const onSignUpPressed = () =>{
-    console.warn("Signed up pressed")
+    console.log("Signed up pressed")
     navi.navigate('SignUpChoice')
 }
 
 const onForgotPasswordPressed = () => {
-    console.warn("Forgot password")
+    console.log("Forgot password")
     navi.navigate('ResetPasswordEnterEmail')
 }
 
