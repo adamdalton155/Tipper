@@ -33,6 +33,11 @@ To build this project you need to have either XCode installed or an iOS device c
 'react-native run-ios'. The project will build and either open a simulator or deploy to the iOS device, if all of this is done correctly, you should see something like
 <br>
 this <img width="404" alt="SignInScreen" src="https://user-images.githubusercontent.com/48316441/233995356-65fd7b0c-9472-4479-afe5-4addbec13dee.png">
-
+<br>
+<hr>
+<i><h2>Screencast</h2></i>
+The screencast is split into two parts. Part one is screen recoreded on the simulator on my machine and is uploaded to YouTube [here](https://youtu.be/S2b_p2DGN5g)
+Part two is screen recorded on our mobile device as trying to use the camera in a simulator crashes the app. This is not a fault with out app, simulators 
+cannot use cameras and is also uploaded to YouTube [here](https://youtube.com/shorts/gOWl-4Lta14). This is discussed in the dissertation
 
 
