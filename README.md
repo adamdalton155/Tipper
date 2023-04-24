@@ -16,4 +16,4 @@ Finally you need to install the React-Native CLI. For a more in-depth descriptio
 <i><h2>Building and deploying</h2></i>
 To build this project you need to have either XCode installed or an iOS device connected to your machine via USB. Open a Command Prompt/Terminal and run the command 
 'react-native run-ios'. The project will build and either open a simulator or deploy to the iOS device, if all of this is done correctly, you should see something like
-this ![alt text](https://github.com/[adamdalton155]/[Tipper]/blob/[branch]/SignInScreen.png?raw=true)
+this !SignIn(https://github.com/adamdalton155/Tipper/blob/main/SignInScreen.png?raw=true)
