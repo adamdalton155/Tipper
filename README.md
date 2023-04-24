@@ -6,6 +6,21 @@ transferring a sum of money from one user to another. Tipper was developed with 
 with them being able to receive a payment directly into their own bank account as opposed to the tip being given to the business itself or split between the staff.
 <br>
 <hr>
+<i><h2>Features of this project</h2></i>
+The main features of this project are as follows...
+<ol>
+  <li>Login and Sign Up Authentication Flow</li>
+  <li>Generate a QR Code based on information entered</li>
+  <li>Reset Password with a valid verification code sent to email address</li>
+  <li>Sign In with valid account</li>
+  <li>Sign Out</li>
+  <li>Update account password</li>
+  <li>Calculate Tip amount based on entered bill totan and entered percentage</li>
+  <li>Use the camera to scan a QR code</li>
+  <li>Make payment based on calculated total and sent to IBAN scanned from QR code</li>
+</ol>
+<br>
+<hr>
 <i><h2>How to run this project</h2></i>
 To run this project, what you need to is create a folder locally on your device. Open a command prompt on Windows or a Terminal Window on MacOS. Run the command 
 'git clone https://github.com/adamdalton155/Tipper'. Then you need to change directory into the next level of the folder with the command 'cd Tipper'. Then 
