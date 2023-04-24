@@ -1,12 +1,20 @@
-import { View,StyleSheet, Text, Button } from 'react-native'
+import { View,StyleSheet, Text, Button, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useNavigation } from '@react-navigation/native'
+import { useCreatePaymentIntentMutation } from '../../store/apiSlice'
+import { useRoute } from '@react-navigation/native'
+import {useStripe} from '@stripe/stripe-react-native'
 const QRCodeScan = () => {
   const[hasPermission, setHasPermission] = useState('')
   const[scanned, setScanned] = useState(false)
   const[iban, setIban] = useState('Scan a QR Code')
- const navi = useNavigation()
+  const [createPaymentIntent] = useCreatePaymentIntentMutation()
+  const{initPaymentSheet, presentPaymentSheet} =  useStripe()
+  const navi = useNavigation()
+  const route = useRoute()
+
+  const Tip = route.params.calculatedTip
   const askForCameraPermission = () =>{
     (async () =>{
       const {status} = await BarCodeScanner.requestPermissionsAsync()
@@ -23,8 +31,56 @@ const QRCodeScan = () => {
     setIban(data)
     console.log("Type: " + type)
     console.log("Data: " + data)
-    navi.navigate('HomeScreen')
+    onMakePayment()
   }
+  const onMakePayment = async () => {
+    const response = await createPaymentIntent({amount: route.params.Tip })
+    
+    console.log(response)
+
+    if(response.error){
+      Alert.alert('Something went wrong,', response.error)
+      return;
+    }
+
+    const { paymentIntent } = response.data;
+
+  const paymentMethod = {
+    type: 'sepa_debit',
+    sepa_debit: {
+      iban: iban, // set the IBAN to the scanned value
+    },
+    billing_details: {
+      name: '***', // set the name for the billing details
+    },
+  };
+
+  const { error } = await stripe.createPaymentMethod(paymentMethod);
+
+  if (error) {
+    Alert.alert('Something went wrong,', error.message);
+    return;
+  }
+
+    const initResponse = await initPaymentSheet({
+      merchantDisplayName: 'Tipper',
+      paymentIntentClientSecret: paymentIntent.client_secret,
+      customFlow: true,
+      paymentMethodId: paymentMethod.id
+      
+    })
+
+    if(initResponse.error){
+      console.log(initResponse.error)
+      Alert.alert('Something went wrong,', response.error)
+      return;
+    }
+    
+    await presentPaymentSheet()
+
+  };
+
+  
 
   if(hasPermission === null) {
     return(

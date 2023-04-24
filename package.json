@@ -19,6 +19,8 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@react-navigation/stack": "^6.3.16",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@stripe/stripe-react-native": "0.23.3",
     "amazon-cognito-identity-js": "^6.1.2",
     "aws-amplify": "^5.0.22",
     "aws-amplify-react-native": "^7.0.2",
@@ -48,9 +50,9 @@
     "react-native-share": "^8.2.1",
     "react-native-svg": "^13.9.0",
     "react-native-svg-transformer": "^1.0.0",
+    "react-redux": "^8.0.5",
     "rn-fetch-blob": "^0.12.0",
-    "stripe": "^12.2.0",
-    "@stripe/stripe-react-native": "0.23.3"
+    "stripe": "^12.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

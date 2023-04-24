@@ -4,10 +4,10 @@ const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
 
-app.use(bodyParser.json())
+app.use(bodyParser.json)
 app.use('/payments', paymentRoutes)
 
-app.get('/', (req, res)=>{
+app.get(' http://10.0.2.2/api/test/', (req, res)=>{
     res.send("Hello")
 })
 

@@ -9,20 +9,20 @@ const CalculateTipScreen = () => {
     const [billTotal, setBillTotal] = useState('')
     const [percentage, setPercentage] = useState('')
     var [calculatedTip, setCalculatedTip] = useState('')
-
+    let tipAsNumber
     const navi = useNavigation()
 
     const CalculateTip = () => {
-  const calculatedTip = (billTotal * percentage) / 100;
-  const roundedTip = calculatedTip.toFixed(2); // round to 2 decimal places
+  let calculatedTip = (billTotal * percentage) / 100;
+  let roundedTip = calculatedTip.toFixed(2); // round to 2 decimal places
   setCalculatedTip(roundedTip);
   setCalculatedTip.toString()
-  const tipAsNumber = parseFloat(calculatedTip);//used for payments
+  tipAsNumber = parseFloat(calculatedTip);//used for payments
   Keyboard.dismiss()
 };
 
     const ScanQRCode = () =>{
-      navi.navigate('QRCodeScan')
+      navi.navigate('QRCodeScan', {calculatedTip})
     }
  
 
