@@ -10,7 +10,7 @@ with them being able to receive a payment directly into their own bank account a
 To run this project, what you need to is create a folder locally on your device. Open a command prompt on Windows or a Terminal Window on MacOS. Run the command 
 'git clone https://github.com/adamdalton155/Tipper'. Then you need to change directory into the next level of the folder with the command 'cd Tipper'. Then 
 run the command 'npm install', when that has completed, run the command 'bundle install'. Once that has completed change directory into ios and run the command 'pod install'.
-Finally you need to install the React-Native CLI. For a more in-depth description of this process, follow this step-by-step guide <a href="https://reactnative.dev/docs/environment-setup"></a>
+Finally you need to install the React-Native CLI. For a more in-depth description of this process, follow this [step-by-step guide] (https://reactnative.dev/docs/environment-setup)
 <br>
 <hr>
 <i><h2>Building and deploying</h2></i>
