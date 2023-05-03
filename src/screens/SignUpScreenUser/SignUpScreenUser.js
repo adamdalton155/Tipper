@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
 import { Alert } from "react-native";
 const SignUpScreenUser = () => {
+    //This screen is where a user enters their information for signing up assuming they selected to sign up as an user
     const [firstName, setFirstName] = useState('')
     const [secondName, setSecondName] = useState('')
     const [email, setEmail] = useState('')
@@ -14,12 +15,14 @@ const SignUpScreenUser = () => {
     const [password, setPassword] = useState('')
     const navi = useNavigation()
 
-    const onRegisterUserPressed = async() => {
+    //Function to submit information to AWS Amplify back-end based on the sign up requirments set on AWS Amplify
+    //If al the information entered is correct, user is brought to screen to verify email address
+    const onRegisterUserPressed = async () => {
         try {
             const response = await Auth.signUp({
                 username: email,
                 password,
-                attributes:{
+                attributes: {
                     email,
                     name: firstName,
                     family_name: secondName,
@@ -27,12 +30,13 @@ const SignUpScreenUser = () => {
                 }
             })
             console.log(response)
-            navi.navigate('ConfirmSignUpUser', {email})
+            navi.navigate('ConfirmSignUpUser', { email })
         } catch (error) {
             Alert.alert('Oops', error.message);
         }
         console.warn("Verify code page")
     }
+    //If the user wants to cancel sign up process and go back to the sign in screen
     const onSignInPressed = () => {
         console.warn("Return to Sign in pressed")
         navi.navigate('SignIn')

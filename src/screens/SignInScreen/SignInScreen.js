@@ -7,54 +7,60 @@ import { ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
 
-const SignInScreen = () =>{
+const SignInScreen = () => {
+    //This is the homescreen the user is met with when they first load up the app
+
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navi = useNavigation()
 
-
-const onSignInPressed = async () =>{ 
-    if(loading){
-        return
+    //Sign in button
+    const onSignInPressed = async () => {
+        //If loading is true (Sign in button has been pressed) it wont restart Login authentication
+        if (loading) {
+            return
+        }
+        setLoading(true)
+        try {
+            //Tries to authenticate login details and if login information is valid, user is brought to home screen
+            const response = await Auth.signIn(email, password)
+            console.log(response)
+            navi.navigate('HomeScreen')
+            //If login details are incorrect, user sees error message
+        } catch (error) {
+            Alert.alert("Oops: ", error.message)
+        }
+        setLoading(false)
     }
-    setLoading(true)
-    try {
-        const response = await Auth.signIn(email, password)
-        console.log(response)
-        navi.navigate('HomeScreen')
-    } catch (error) {
-        Alert.alert("Oops: ", error.message)
+    //Button to sign up
+    const onSignUpPressed = () => {
+        console.log("Signed up pressed")
+        navi.navigate('SignUpChoice')
     }
-    setLoading(false)
-}
+    //Button to reset password
+    const onForgotPasswordPressed = () => {
+        console.log("Forgot password")
+        navi.navigate('ResetPasswordEnterEmail')
+    }
 
-const onSignUpPressed = () =>{
-    console.log("Signed up pressed")
-    navi.navigate('SignUpChoice')
-}
-
-const onForgotPasswordPressed = () => {
-    console.log("Forgot password")
-    navi.navigate('ResetPasswordEnterEmail')
-}
-
-return(
-    <ScrollView showsHorizontalScrollIndicator = {false} showsVerticalScrollIndicator = {false}>
-    <View style={styles.root}>
-        <Image source={Logo} style={styles.logo} resizeMode="contain"></Image>
-       <TextInput style={styles.container} placeholder="E-mail address" autoCapitalize="none" value={email} onChangeText={setEmail} />
-        <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true}/>
-        <CustomButton text={loading ? "Loading..." : "Sign in"} onPress={onSignInPressed}/>
-        <CustomButton text="Sign Up" onPress={onSignUpPressed} bgColor='#29A0B1' fgColor='#363636' type="TERTIARY"/>
-        <CustomButton text="Forgot password?" onPress={onForgotPasswordPressed} type="TERTIARY"/>
-    </View>
-    </ScrollView>
-)
+    return (
+        <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
+            <View style={styles.root}>
+                <Image source={Logo} style={styles.logo} resizeMode="contain"></Image>
+                <TextInput style={styles.container} placeholder="E-mail address" autoCapitalize="none" value={email} onChangeText={setEmail} />
+                <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
+                {/*Checks if loading is true, if it is, displays loading text*/}
+                <CustomButton text={loading ? "Loading..." : "Sign in"} onPress={onSignInPressed} />
+                <CustomButton text="Sign Up" onPress={onSignUpPressed} bgColor='#29A0B1' fgColor='#363636' type="TERTIARY" />
+                <CustomButton text="Forgot password?" onPress={onForgotPasswordPressed} type="TERTIARY" />
+            </View>
+        </ScrollView>
+    )
 }
 
 const styles = StyleSheet.create({
-    root:{
+    root: {
         alignItems: 'center',
         padding: 25
     },

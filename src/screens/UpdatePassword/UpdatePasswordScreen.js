@@ -5,16 +5,20 @@ import { Auth } from 'aws-amplify';
 import { Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const UpdatePasswordScreen = () => {
+  //Screen for user to update password after they have signed in
+  
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const navi = useNavigation();
 
+  //Function gets the current authenticated user and updates the password if the password requirments are met
  const onUpdatePasswordPressed = () => {
     Auth.currentAuthenticatedUser()
       .then((user) => {
         return Auth.changePassword(user, oldPassword, newPassword);
       })
       .then(() => {
+        //If password is updated correctly, user is brought back to the home screen
         Alert.alert('Password updated successfully!');
         navi.navigate('HomeScreen');
       })

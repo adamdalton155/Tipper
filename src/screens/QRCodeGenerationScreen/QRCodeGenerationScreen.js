@@ -2,37 +2,40 @@ import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-nativ
 import React, { useState } from 'react'
 import CustomButton from '../../components/CustomButton/CustomButton';
 import QRCode from 'react-native-qrcode-svg';
-import RNFS from 'react-native-fs'
 import { useNavigation } from '@react-navigation/native';
 const QRCodeGenerationScreen = () => {
+  //This is used to generate the QR code from an employee
+
   const [input, setInput] = useState('')
   const [qrValue, setQrValue] = useState('')
   const [qrUri, setQrUri] = useState('')
   const navi = useNavigation()
 
 
-
-  const GenerateQrCode = () =>{
-      return (
-        <QRCode
-          value={qrValue ? qrValue : 'NA'}
-          size={300}
-          color = "white"
-          backgroundColor = 'black'>
-        </QRCode>
-      );
+  //Function to generate QR Code based on the information entered (users IBAN)
+  //This is also used to set the size and colour of the QR Code
+  const GenerateQrCode = () => {
+    return (
+      <QRCode
+        value={qrValue ? qrValue : 'NA'}
+        size={300}
+        color="white"
+        backgroundColor='black'>
+      </QRCode>
+    );
   }
 
+  //Handles the generation of the QR Code
   const handleGenerate = () => {
     setQrValue(input);
   }
 
-
-  const ReturnToSignIn = () =>{
+  //Button to return back to the sign in page
+  const ReturnToSignIn = () => {
     navi.navigate('SignIn')
   }
 
-  return(
+  return (
     <View style={styles.root}>
       <Text style={styles.title}>Generate your QR Code</Text>
       {qrValue ? (
@@ -43,7 +46,7 @@ const QRCodeGenerationScreen = () => {
       <TextInput style={styles.container} placeholder='Enter IBAN' value={input} onChangeText={setInput}></TextInput>
       <CustomButton text="Generate QR Code" onPress={handleGenerate}></CustomButton>
       <CustomButton text="Return to sign-in" onPress={ReturnToSignIn}></CustomButton>
-    </View>  
+    </View>
   )
 }
 

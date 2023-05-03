@@ -3,12 +3,15 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from "../../components/CustomButton/CustomButton";
 const UpdateAccountDetails = () => {
+  //Screen where the user can choose to either update their password or email address
   const navi = useNavigation()
 
+  //Button to bring user to update email screen
   const UpdateEmail = () =>{
     navi.navigate('UpdateEmail')
   }
 
+  //Button to bring user to update email screen
   const UpdatePassword = () =>{
     navi.navigate('UpdatePasswordScreen')
   }

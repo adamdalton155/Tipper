@@ -5,9 +5,11 @@ import { Auth } from 'aws-amplify';
 import { Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const UpdateEmail = () => {
+  //Screen for user to update email address after they have signed in
   const navi = useNavigation()
   const [email, setEmail] = useState('')
 
+   //Function gets the current authenticated user and updates emaill address. This functionality doesn't work but doesn't throw an error either
   const handleUpdateEmail = async() =>{
     try {
       const user = await Auth.currentAuthenticatedUser();

@@ -6,6 +6,8 @@ import { useCreatePaymentIntentMutation } from '../../store/apiSlice'
 import { useRoute } from '@react-navigation/native'
 import {useStripe} from '@stripe/stripe-react-native'
 const QRCodeScan = () => {
+  //This screen is used to scan QR codes and then display the Stripe payment functionality
+
   const[hasPermission, setHasPermission] = useState('')
   const[scanned, setScanned] = useState(false)
   const[iban, setIban] = useState('Scan a QR Code')
@@ -15,17 +17,20 @@ const QRCodeScan = () => {
   const route = useRoute()
 
   const Tip = route.params.calculatedTip
+
+  //Asks the device for permission to use the camera and sets it to granted if allowed
   const askForCameraPermission = () =>{
     (async () =>{
       const {status} = await BarCodeScanner.requestPermissionsAsync()
       setHasPermission(status === 'granted')
     })()
   }
-
+  //The display box for the permission request
   useEffect(() =>{
     askForCameraPermission()
   }, [])
 
+  //Scans and stores the information scanned from the barcode and then loads the Stripe payment overlay
   const handleBarCodeScanned = ({type, data}) =>{
     setScanned(true)
     setIban(data)
@@ -33,6 +38,8 @@ const QRCodeScan = () => {
     console.log("Data: " + data)
     onMakePayment()
   }
+
+  //Sets the total from the calculated Tip
   const onMakePayment = async () => {
     const response = await createPaymentIntent({amount: route.params.Tip })
     
@@ -45,6 +52,7 @@ const QRCodeScan = () => {
 
     const { paymentIntent } = response.data;
 
+    //Sets the payment details and sets the employees IBAN as the destination of the payment
   const paymentMethod = {
     type: 'sepa_debit',
     sepa_debit: {
@@ -81,7 +89,7 @@ const QRCodeScan = () => {
   };
 
   
-
+  //If hasnt been granted or denied, device requests user to either grant or deny permission
   if(hasPermission === null) {
     return(
       <View style={styles.container}>
@@ -90,7 +98,7 @@ const QRCodeScan = () => {
     )
   }
   
-
+  //If permission isnt granted, camera isnt used and displays no access to camera
   if(hasPermission === false){
     return(
       <View style={styles.container}>

@@ -4,36 +4,37 @@ import { useState } from "react";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { useNavigation } from '@react-navigation/native';
 import { Auth } from "aws-amplify";
-import { useRoute } from '@react-navigation/native';
-const ResetPasswordEnterEmail = () =>{
+const ResetPasswordEnterEmail = () => {
+    //This is screen is for a user to reset their passwod by entering their email address
+
     const [email, setEmail] = useState('');
     const navi = useNavigation()
 
-const onConfirmPressed = async() =>{
-try {
-    await Auth.forgotPassword(email)
-    console.warn("Confirm Pressed")
-    navi.navigate('ResetPasswordScreen', {email})
-} catch (error) {
-    Alert.alert("Oops " + error.message)
+    //Button for that when the user enters their verified email address, they can reset their passsword
+    //User enters email address and then recieves an verification code
+    const onConfirmPressed = async () => {
+        try {
+            //Method from AWS Amplify
+            await Auth.forgotPassword(email)
+            console.warn("Confirm Pressed")
+            //Stores email address to bring over to reset password screen
+            navi.navigate('ResetPasswordScreen', { email })
+        } catch (error) {
+            Alert.alert("Oops " + error.message)
+        }
     }
-}
 
-const onResendPressed = () =>{
-    console.warn("Resend Pressed")
-}
-
-return(
-    <View style={styles.root}>
-        <Text style={styles.title}>Enter your your E-Mail address</Text>
-        <TextInput style={styles.container} placeholder="E-Mail" autoCapitalize="none" value={email} onChangeText={setEmail}/>
-        <CustomButton text="Get verification code" onPress={onConfirmPressed}/>
-    </View>
-)
+    return (
+        <View style={styles.root}>
+            <Text style={styles.title}>Enter your your E-Mail address</Text>
+            <TextInput style={styles.container} placeholder="E-Mail" autoCapitalize="none" value={email} onChangeText={setEmail} />
+            <CustomButton text="Get verification code" onPress={onConfirmPressed} />
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
-    root:{
+    root: {
         alignItems: 'center',
         padding: 25
     },

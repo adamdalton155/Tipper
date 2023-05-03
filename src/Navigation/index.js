@@ -18,7 +18,7 @@ import UpdateEmail from '../screens/UpdateEmail/UpdateEmail'
 import ConfirmSignUpUser from '../screens/ConfirmSignUpUser/ConfirmSignUpUser'
 import QRCodeScan from '../screens/QRCodeScanner/QRCodeScan'
 const Stack = createNativeStackNavigator()
-
+//This file is used for the user to be able to naivgate around the application. Creates a stack of screens and this is called in app.js
 const Navigation = () => {
   return (
     <NavigationContainer>

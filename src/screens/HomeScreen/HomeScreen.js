@@ -4,16 +4,18 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import { useNavigation } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 const HomeScreen = () => {
-  const navi = useNavigation()
+  //This is the home screen the user sees when they have signed in
 
+  const navi = useNavigation()
+  //Button to bring user to make a tip screen
   const MakeTip = () =>{
     navi.navigate('CalculateTipScreen')
   }
-
+  //Button to bring user to update password screen
   const UpdateAccountDetails = () =>{
     navi.navigate('UpdateAccountDetails')
   }
-
+  //Button to allow the user to sign out and go back to the home screen
   const SignOut = async() =>{
     try {
       await Auth.signOut();

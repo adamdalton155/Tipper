@@ -1,5 +1,5 @@
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { ScrollView } from "react-native";
@@ -7,6 +7,8 @@ import { useNavigation } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
 
 const SignUpScreenEmployee = () => {
+    //This screen is where an employee enters their information for signing up assuming they selected to sign up as an employee
+
     const [firstName, setFirstName] = useState('')
     const [secondName, setSecondName] = useState('')
     const [email, setEmail] = useState('')
@@ -14,9 +16,11 @@ const SignUpScreenEmployee = () => {
     const [password, setPassword] = useState('')
     const navi = useNavigation()
 
+    //Function to submit information to AWS Amplify back-end based on the sign up requirments set on AWS Amplify
+    //If al the information entered is correct, user is brought to screen to verify email address
     const onRegisterEmployeePressed = async () => {
         try {
-            const response= await Auth.signUp({
+            const response = await Auth.signUp({
                 username: email,
                 password,
                 attributes: {
@@ -27,12 +31,12 @@ const SignUpScreenEmployee = () => {
                 }
             });
             console.log(response);
-            navi.navigate('ConfirmSignUp', {email})
+            navi.navigate('ConfirmSignUp', { email })
         } catch (error) {
             Alert.alert('Oops', error.message);
         }
     }
-
+    //If the user wants to cancel sign up process and go back to the sign in screen
     const onSignInPressed = () => {
         console.warn("Return to Sign in pressed")
         navi.navigate('SignIn')

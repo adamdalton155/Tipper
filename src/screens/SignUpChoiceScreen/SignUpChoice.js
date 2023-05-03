@@ -3,12 +3,15 @@ import React from 'react'
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { useNavigation } from '@react-navigation/native';
 const SignUpChoice = () => {
+  //This screen is for the user to choose if they are a customer or an employee
+
   const navi = useNavigation()
 
+  //If user is a customer, they click user button
   const onCustomerPressed = () =>{
     navi.navigate('SignUpScreenUser')
   }
-
+  //If user is an employee, they click employee button
   const onEmployeePressed = () =>{
     navi.navigate('SignUpScreenEmployee')
   }
