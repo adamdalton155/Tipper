@@ -1,0 +1,32 @@
+\chapter{Conclusion}
+To for this section, we will recount the purpose of the project. The goal of this application was to be able to safely and securely transfer money from one user to another by using a generated quick response code that contains a users IBAN, which is the payment destination. We wanted a user to be able to create an account, update account information, generate and scan a QR code and finally make the payment. 
+
+The reason for developing this idea was to try and help employees of the hospitality industry, protect their wages, work and offer an alternative to the tipping culture in Ireland. We believed that if we could do that, than we would have considered this project a success. Unfortunately we could not get everything working that we would have liked to. For example the saving of the quick response code to the device was quite disappointing to say the least. We also would have liked to have given the user the option to get the verification code via text message but email was a good alternative to this. As long as the user can authenticate themselves in the sign up flow, we are happy.
+
+We were also happy that we tried to consider expanding the application, e.g. getting the phone number from the user to potentially implement the authentication via SMS in the future. We made sure to think of scalability and accommodate for that. What we never thought of how difficult it is to actually develop a mobile application. Prior to starting the project, we knew it would be difficult to develop one, but not to this extent. It requires a lot of planning, gathering requirements, investigating technologies etc.
+
+Even after doing all this planning, it still wasn't enough in some aspects. Take the example of MongoDB. We initially thought that would be a great option to handle the back-end but this wasn't the case. We started implementing MongoDB, read the documentation and had some features working before coming to the conclusion that it wasn't going to be a good fit for our project in the end and so was lost time and effort. We don't think this came down to poor planning but rather because this was the first time developing a mobile app like this but this leads us onto our next point.
+
+We came at this project, having to learn nearly everything as we were developing. This isn't just limited to the React-Native framework or JavaScript. We had to learn how to use new IDE's, that being XCode and understanding its quirks and drawbacks. We had to learn how to build and deploy projects to simulators and our mobile device. Understand error messages, how to fix them and prevent them from happening again. A good example of this was 'Pods'. For a long time we didn't understand that for a lot of npm packages, we had to link them in a 'Podfile' by changing directory in the terminal into 'ios' and running the command 'pod install' and subsequently being able to link packages. Even when doing that sometimes that didn't work because of an issue with the package itself. 
+
+Google Utilities, a software designed to help analyze, configure, optimize or maintain a computer caused issues when trying to implement a package. We had to add 'pod 'GoogleUtilities, :modular headers => true' to our podfile to get around this issue and we weren't even developing for Android but this prevented the command 'pod install' from working.
+
+Building and running the project proved to be troublesome at times as well. As mentioned earlier, XCode often forgot that we signed off modules so sometimes we had to press build multiple times to sign off one by one. At the time this felt like frustrating but once you fix an issue once, you can do it again much faster when it came up again.
+
+We were happy with the choice to use Stripe instead of Apple Pay. We found the dashboard on Stripe to be very informative and easy to follow. The implementation for Stripe was easy as well and gave us the opportunity to add a small server to our project using Node. The real benefit of Stripe is that it handles the security for transactions which makes our app Payment Card Industry (PCI) compliant. What this means is our app accepts, transmits, or stores the private data of cardholders is compliant with the various security measures outlined by the PCI Security Standard Council. This is done instead of trying to handle the security ourselves which to be honest, we don't think we would have been capable of implementing PCI compliance ourselves. 
+\section{Outcomes}
+For this, we would like to just quickly go over what came of this project
+\begin{enumerate}
+  \item Researched technologies and methodologies
+  \item Set up the development environment
+  \item Implemented the AWS Amplify Database
+  \item Added Login, Authentication, Forgot Password Flow
+  \item Added Home Screen with Sign out, Making a Tip and Updating Password flows
+  \item Added QR Code Generation
+   \item Implemented Calculating a Tip, Scanning a QR Code and Making Payment (with Stripe) flow 
+   \item Building and Deploying to simulators and mobile devices
+   \item Learned how to implement and debug technologies used
+\end{enumerate}
+
+\section{Final words}
+To conclude, we were happy with how the project went. We went from having no idea how to develop a mobile application to investigating technologies, implementing them, bug fixing and learning how to use many new technologies and put it all together. We feel we met the purpose of the project but also achieved our own personal goal of learning how to go about this. We fully understand that there is so much more to learn about mobile application development and have probably only scratched the surface, but to know that we could apply the knowledge from this to another project is a great feeling. Yes, there were some features we couldn't get working but to know we can use what we now know as the starting point for another project is a great feeling.
