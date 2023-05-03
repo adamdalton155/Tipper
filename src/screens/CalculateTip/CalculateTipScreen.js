@@ -28,7 +28,11 @@ const CalculateTipScreen = () => {
   const ScanQRCode = () => {
     navi.navigate('QRCodeScan', { calculatedTip })
   }
-
+  //User can cancel and return to home screen
+  const onSignInPressed = () => {
+    console.warn("Return to Sign in pressed")
+    navi.navigate('HomeScreen')
+}
 
   return (
     <View style={styles.root}>
@@ -37,6 +41,7 @@ const CalculateTipScreen = () => {
       <TextInput keyboardType='numeric' style={styles.container} placeholder='Enter the tip percentage'  placeholderTextColor='#000000' value={percentage} onChangeText={setPercentage}></TextInput>
       <CustomButton text="Calculate tip" onPress={CalculateTip} />
       <CustomButton text="Scan QR Code" onPress={ScanQRCode} />
+      <CustomButton text="Cancel" onPress={onSignInPressed} />
       <Text style={styles.value}>{`€${calculatedTip}`}</Text>
     </View>
   )

@@ -27,7 +27,10 @@ const UpdatePasswordScreen = () => {
       });
   };
 
-  
+  const HomeScreen = () => {
+    console.warn("Return to Sign in pressed")
+    navi.navigate('HomeScreen')
+}
 
   return (
     <View style={styles.root}>
@@ -47,6 +50,7 @@ const UpdatePasswordScreen = () => {
         onChangeText={setNewPassword}
       />
       <CustomButton text="Update password" onPress={onUpdatePasswordPressed} />
+      <CustomButton text="Cancel" onPress={HomeScreen} />
 
       <Text>- Password requires an uppercase character, lowercase character a number and needs to be atleast 8 characters long</Text>
     </View>

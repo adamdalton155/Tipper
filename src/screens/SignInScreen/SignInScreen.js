@@ -32,7 +32,7 @@ const SignInScreen = () => {
             Alert.alert("Oops: ", error.message)
         }
 
-        
+
         setLoading(false)
     }
     //Button to sign up
@@ -51,10 +51,12 @@ const SignInScreen = () => {
             <View style={styles.root}>
                 <Image source={Logo} style={styles.logo} resizeMode="contain"></Image>
                 <TextInput style={styles.container} clearButtonMode="always" placeholderTextColor='#000000' placeholder="E-mail address" autoCapitalize="none" value={email} onChangeText={setEmail} />
-                <TextInput style={styles.container}clearButtonMode="always" placeholderTextColor='#000000' placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
+                <TextInput style={styles.container} clearButtonMode="always" placeholderTextColor='#000000' placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
                 {/*Checks if loading is true, if it is, displays loading text*/}
                 <CustomButton text={loading ? "Loading..." : "Sign in"} onPress={onSignInPressed} />
                 <CustomButton text="Sign Up" onPress={onSignUpPressed} bgColor='#29A0B1' fgColor='#363636' type="TERTIARY" />
+            </View>
+            <View style={styles.secondaryButtonsContainer}>
                 <CustomButton text="Forgot password?" onPress={onForgotPasswordPressed} type="TERTIARY" />
             </View>
         </ScrollView>
@@ -82,7 +84,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 10,
         marginVertical: 7
+    },
+    secondaryButtonsContainer: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 130
     }
+
 })
 
 export default SignInScreen

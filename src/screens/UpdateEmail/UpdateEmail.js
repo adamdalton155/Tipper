@@ -22,6 +22,11 @@ const UpdateEmail = () => {
       Alert.alert('Oops ', error.message )
     }
   }
+    //User can cancel and return to home screen
+    const HomeScreen = () => {
+      console.warn("Return to Sign in pressed")
+      navi.navigate('HomeScreen')
+  }
 
   return (
     <View style={styles.root}>
@@ -34,6 +39,7 @@ const UpdateEmail = () => {
         onChangeText={setEmail}
       />
     <CustomButton text="Update Email" onPress={handleUpdateEmail} />
+    <CustomButton text="Cancel" onPress={HomeScreen} />
     </View>
   )
 }
