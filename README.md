@@ -37,7 +37,7 @@ this <img width="404" alt="SignInScreen" src="https://user-images.githubusercont
 <hr>
 <i><h2>Screencast</h2></i>
 The screencast is split into two parts. Part one is screen recoreded on the simulator on my machine and is uploaded to YouTube [here](https://youtu.be/S2b_p2DGN5g)
-Part two is screen recorded on our mobile device as trying to use the camera in a simulator crashes the app. This is not a fault with out app, simulators 
+Part two is screen recorded on our mobile device as trying to use the camera in a simulator crashes the app. This is not a fault with our app, simulators 
 cannot use cameras and is also uploaded to YouTube [here](https://youtube.com/shorts/gOWl-4Lta14). This is discussed in the dissertation
 
 
