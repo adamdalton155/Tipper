@@ -31,6 +31,8 @@ const SignInScreen = () => {
         } catch (error) {
             Alert.alert("Oops: ", error.message)
         }
+
+        
         setLoading(false)
     }
     //Button to sign up
@@ -48,8 +50,8 @@ const SignInScreen = () => {
         <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
                 <Image source={Logo} style={styles.logo} resizeMode="contain"></Image>
-                <TextInput style={styles.container} placeholder="E-mail address" autoCapitalize="none" value={email} onChangeText={setEmail} />
-                <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
+                <TextInput style={styles.container} clearButtonMode="always" placeholderTextColor='#000000' placeholder="E-mail address" autoCapitalize="none" value={email} onChangeText={setEmail} />
+                <TextInput style={styles.container}clearButtonMode="always" placeholderTextColor='#000000' placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
                 {/*Checks if loading is true, if it is, displays loading text*/}
                 <CustomButton text={loading ? "Loading..." : "Sign in"} onPress={onSignInPressed} />
                 <CustomButton text="Sign Up" onPress={onSignUpPressed} bgColor='#29A0B1' fgColor='#363636' type="TERTIARY" />

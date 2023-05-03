@@ -33,8 +33,8 @@ const CalculateTipScreen = () => {
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Calculate your Tip</Text>
-      <TextInput keyboardType='numeric' style={styles.container} placeholder='Enter your bill total' value={billTotal} onChangeText={setBillTotal}></TextInput>
-      <TextInput keyboardType='numeric' style={styles.container} placeholder='Enter the tip percentage' value={percentage} onChangeText={setPercentage}></TextInput>
+      <TextInput keyboardType='numeric' style={styles.container} placeholder='Enter your bill total' placeholderTextColor='#000000' value={billTotal} onChangeText={setBillTotal}></TextInput>
+      <TextInput keyboardType='numeric' style={styles.container} placeholder='Enter the tip percentage'  placeholderTextColor='#000000' value={percentage} onChangeText={setPercentage}></TextInput>
       <CustomButton text="Calculate tip" onPress={CalculateTip} />
       <CustomButton text="Scan QR Code" onPress={ScanQRCode} />
       <Text style={styles.value}>{`€${calculatedTip}`}</Text>

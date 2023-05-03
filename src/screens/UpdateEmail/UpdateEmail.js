@@ -30,6 +30,7 @@ const UpdateEmail = () => {
         style={styles.container}
         placeholder="New Email"
         value={email}
+        placeholderTextColor='#000000'
         onChangeText={setEmail}
       />
     <CustomButton text="Update Email" onPress={handleUpdateEmail} />

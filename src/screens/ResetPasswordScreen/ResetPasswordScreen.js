@@ -37,8 +37,8 @@ const ResetPasswordScreen = () => {
     return (
         <View style={styles.root}>
             <Text style={styles.title}>Reset password</Text>
-            <TextInput style={styles.container} placeholder="Enter code" value={emailCode} onChangeText={setCode}></TextInput>
-            <TextInput style={styles.container} placeholder="New password" value={newPassword} onChangeText={setNewPassword}></TextInput>
+            <TextInput style={styles.container} placeholder="Enter code" placeholderTextColor='#000000' value={emailCode} onChangeText={setCode}></TextInput>
+            <TextInput style={styles.container} placeholder="New password" placeholderTextColor='#000000' value={newPassword} onChangeText={setNewPassword}></TextInput>
             <CustomButton text="Submit" onPress={onPressUpdatePassword}> </CustomButton>
             <CustomButton text="Cancel" onPress={onPressReturnToSignIn} />
             <Text>- Password requires an uppercase character, lowercase character a number and needs to be atleast 8 characters long</Text>

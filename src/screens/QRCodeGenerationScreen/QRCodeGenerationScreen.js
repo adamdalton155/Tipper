@@ -43,7 +43,7 @@ const QRCodeGenerationScreen = () => {
           <GenerateQrCode />
         </View>
       ) : null}
-      <TextInput style={styles.container} placeholder='Enter IBAN' value={input} onChangeText={setInput}></TextInput>
+      <TextInput style={styles.container} placeholder='Enter IBAN' placeholderTextColor='#000000' value={input} onChangeText={setInput}></TextInput>
       <CustomButton text="Generate QR Code" onPress={handleGenerate}></CustomButton>
       <CustomButton text="Return to sign-in" onPress={ReturnToSignIn}></CustomButton>
     </View>

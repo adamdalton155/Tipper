@@ -27,7 +27,7 @@ const ResetPasswordEnterEmail = () => {
     return (
         <View style={styles.root}>
             <Text style={styles.title}>Enter your your E-Mail address</Text>
-            <TextInput style={styles.container} placeholder="E-Mail" autoCapitalize="none" value={email} onChangeText={setEmail} />
+            <TextInput style={styles.container} placeholder="E-Mail" autoCapitalize="none" placeholderTextColor='#000000' value={email} onChangeText={setEmail} />
             <CustomButton text="Get verification code" onPress={onConfirmPressed} />
         </View>
     )

@@ -46,11 +46,11 @@ const SignUpScreenEmployee = () => {
         <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
                 <Text style={styles.title}>Register your account</Text>
-                <TextInput style={styles.container} placeholder="First name" value={firstName} onChangeText={setFirstName} />
-                <TextInput style={styles.container} placeholder="Second name" value={secondName} onChangeText={setSecondName} />
-                <TextInput style={styles.container} placeholder="Email address" autoCapitalize="none" value={email} onChangeText={setEmail} />
-                <TextInput style={styles.container} placeholder="Phone number (+ and country code)" value={phoneNum} onChangeText={setPhoneNum} />
-                <TextInput style={styles.container} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
+                <TextInput style={styles.container} placeholder="First name" placeholderTextColor='#000000' value={firstName} onChangeText={setFirstName} />
+                <TextInput style={styles.container} placeholder="Second name" placeholderTextColor='#000000' value={secondName} onChangeText={setSecondName} />
+                <TextInput style={styles.container} placeholder="Email address" placeholderTextColor='#000000' autoCapitalize="none" value={email} onChangeText={setEmail} />
+                <TextInput style={styles.container} placeholder="Phone number (+ and country code)" placeholderTextColor='#000000' value={phoneNum} onChangeText={setPhoneNum} />
+                <TextInput style={styles.container} placeholder="Password" value={password} placeholderTextColor='#000000' onChangeText={setPassword} secureTextEntry={true} />
                 <CustomButton text="Register account" onPress={onRegisterEmployeePressed} />
                 <Text>- Password requires an uppercase character, lowercase character a number and needs to be atleast 8 characters long</Text>
                 <CustomButton text="Have an account? Sign in" onPress={onSignInPressed} type="TERTIARY" />

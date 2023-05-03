@@ -35,12 +35,14 @@ const UpdatePasswordScreen = () => {
       <TextInput
         style={styles.container}
         placeholder="Old password"
+        placeholderTextColor='#000000'
         value={oldPassword}
         onChangeText={setOldPassword}
       />
       <TextInput
         style={styles.container}
         placeholder="New password"
+        placeholderTextColor='#000000'
         value={newPassword}
         onChangeText={setNewPassword}
       />

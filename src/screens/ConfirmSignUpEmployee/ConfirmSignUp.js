@@ -42,7 +42,7 @@ const ConfirmSignUp = () => {
     return (
         <View style={styles.root}>
             <Text style={styles.title}>Confirm your email address</Text>
-            <TextInput style={styles.container} placeholder="Enter verification code" value={code} onChangeText={setCode} />
+            <TextInput style={styles.container} placeholder="Enter verification code" placeholderTextColor='#000000' value={code} onChangeText={setCode} />
             <CustomButton text="Verify code" onPress={onConfirmPressed} />
             <CustomButton text="Resend code" onPress={onResendPressed} type="TERTIARY" />
         </View>
