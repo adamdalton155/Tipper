@@ -21,6 +21,8 @@ const CalculateTipScreen = () => {
     setCalculatedTip(roundedTip);
     setCalculatedTip.toString()
     tipAsNumber = parseFloat(calculatedTip);//used for payments
+    tip =  Math.floor(tipAsNumber* 100)
+    console.log(tipAsNumber)
     //Dismisses keyboard when calculated tip button is pressed
     Keyboard.dismiss()
   };

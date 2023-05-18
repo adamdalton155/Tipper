@@ -1,92 +1,99 @@
-import { View,StyleSheet, Text, Button, Alert } from 'react-native'
+import { View, StyleSheet, Text, Button, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useNavigation } from '@react-navigation/native'
 import { useCreatePaymentIntentMutation } from '../../store/apiSlice'
 import { useRoute } from '@react-navigation/native'
-import {useStripe} from '@stripe/stripe-react-native'
-const QRCodeScan = () => {
-  //This screen is used to scan QR codes and then display the Stripe payment functionality
+import { useStripe } from '@stripe/stripe-react-native'
 
-  const[hasPermission, setHasPermission] = useState('')
-  const[scanned, setScanned] = useState(false)
-  const[iban, setIban] = useState('Scan a QR Code')
+const QRCodeScan = () => {
+  // This screen is used to scan QR codes and then display the Stripe payment functionality
+
+  const stripe = useStripe()
+  const [hasPermission, setHasPermission] = useState('')
+  const [scanned, setScanned] = useState(false)
+  const [iban, setIban] = useState('Scan a QR Code')
+  const [paymentMethodType, setPaymentMethodType] = useState('sepa_debit') // Provide the default payment method type
   const [createPaymentIntent] = useCreatePaymentIntentMutation()
-  const{initPaymentSheet, presentPaymentSheet} =  useStripe()
+  const { initPaymentSheet, presentPaymentSheet } = useStripe()
   const navi = useNavigation()
   const route = useRoute()
 
-  const Tip = route.params.calculatedTip
-
-  //Asks the device for permission to use the camera and sets it to granted if allowed
-  const askForCameraPermission = () =>{
-    (async () =>{
-      const {status} = await BarCodeScanner.requestPermissionsAsync()
+  // Asks the device for permission to use the camera and sets it to granted if allowed
+  const askForCameraPermission = () => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync()
       setHasPermission(status === 'granted')
     })()
   }
-  //The display box for the permission request
-  useEffect(() =>{
+
+  // The display box for the permission request
+  useEffect(() => {
     askForCameraPermission()
   }, [])
 
-  //Scans and stores the information scanned from the barcode and then loads the Stripe payment overlay
-  const handleBarCodeScanned = ({type, data}) =>{
+  // Scans and stores the information scanned from the barcode and then loads the Stripe payment overlay
+  const handleBarCodeScanned = async ({ type, data }) => {
     setScanned(true)
     setIban(data)
-    console.log("Type: " + type)
-    console.log("Data: " + data)
+    console.log('Type: ' + type)
+    console.log('Data: ' + data)
+  }
+
+  const processPayment = async () => {
     onMakePayment()
   }
 
-  //Sets the total from the calculated Tip
+  // Sets the total from the calculated Tip
   const onMakePayment = async () => {
-    const response = await createPaymentIntent({amount: route.params.Tip })
-    
-    console.log(response)
+    try {
+      const response = await createPaymentIntent({ amount: tip })
 
-    if(response.error){
-      Alert.alert('Something went wrong,', response.error)
-      return;
+      console.log(response)
+
+      if (response.error) {
+        Alert.alert('Something went wrong,', response.error)
+        return
+      }
+
+      const { paymentIntent } = response.data
+
+      const paymentMethod = {
+        type: paymentMethodType, // Use the selected payment method type
+        [paymentMethodType]: {
+          iban: iban, // set the IBAN to the scanned value
+        },
+        billing_details: {
+          name: '***', // set the name for the billing details
+        },
+      }
+
+      const { error } = await stripe.createPaymentMethod(paymentMethod)
+
+      if (error) {
+        Alert.alert('Something went wrong,', error.message)
+        return
+      }
+
+      const initResponse = await initPaymentSheet({
+        merchantDisplayName: 'Tipper',
+        paymentIntentClientSecret: paymentIntent.client_secret,
+        customFlow: true,
+        paymentMethodId: paymentMethod.id,
+      })
+
+      if (initResponse.error) {
+        console.log(initResponse.error)
+        Alert.alert('Something went wrong,', initResponse.error)
+        return
+      }
+
+      await presentPaymentSheet()
+    } catch (error) {
+      console.log('Unhandled error:', error)
+      // Handle any unhandled errors here
     }
-
-    const { paymentIntent } = response.data;
-
-    //Sets the payment details and sets the employees IBAN as the destination of the payment
-  const paymentMethod = {
-    type: 'sepa_debit',
-    sepa_debit: {
-      iban: iban, // set the IBAN to the scanned value
-    },
-    billing_details: {
-      name: '***', // set the name for the billing details
-    },
-  };
-
-  const { error } = await stripe.createPaymentMethod(paymentMethod);
-
-  if (error) {
-    Alert.alert('Something went wrong,', error.message);
-    return;
   }
-
-    const initResponse = await initPaymentSheet({
-      merchantDisplayName: 'Tipper',
-      paymentIntentClientSecret: paymentIntent.client_secret,
-      customFlow: true,
-      paymentMethodId: paymentMethod.id
-      
-    })
-
-    if(initResponse.error){
-      console.log(initResponse.error)
-      Alert.alert('Something went wrong,', response.error)
-      return;
-    }
-    
-    await presentPaymentSheet()
-
-  };
 
   
   //If hasnt been granted or denied, device requests user to either grant or deny permission
@@ -117,6 +124,7 @@ const QRCodeScan = () => {
     </View>
     <Text style={styles.maintext}>{iban}</Text>
     {scanned && <Button title={'Scan again'} onPress={() => setScanned(false)} color='tomato'></Button>}
+    <Button title={'Make Payment'} onPress={processPayment} />
     </View>
     )
   }
